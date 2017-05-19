@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+ 
+        <menuitem id="menu_citasjmo" name="CitasJMO"/>
+ 
+        <menuitem id="menu_citasjmo_cita_view" name="Citas" parent="menu_citasjmo"/>
+ 
+        <record model="ir.actions.act_window" id="listar_cita_action">
+            <field name="name">CitasJMO</field>
+            <field name="res_model">citasjmo.cita</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+ 
+        <menuitem id="menu_citasjmo_listar_cita" name="Listar citas" parent="menu_citasjmo_cita_view" action="listar_cita_action" />
+ 
+        <record model="ir.ui.view" id="view_citasjmo_cita_tree">
+            <field name="name">view.citasjmo.cita.tree</field>
+            <field name="model">citasjmo.cita</field>
+            <field name="arch" type="xml">
+                <tree string="Citas">
+                    <field name="autor"/>
+                    <field name="fecha"/>
+					<field name="orden"/>
+                </tree>
+            </field>
+        </record>
+ 
+        <record model="ir.ui.view" id="view_citasjmo_cita_form">
+            <field name='name'>view.citasjmo.cita.form</field>
+            <field name="model">citasjmo.cita</field>
+            <field name="arch" type="xml">
+                <form string="Cita">
+                    <sheet>
+                        <group>
+							<separator string="Autor de la Cita" colspan="4"/> 
+                            <group colspan="4">                               
+                                <field name="autor"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Cita">
+                                <field name="cita"/>
+                            </page>
+                        </notebook>
+						<group colspan="2" col="2">
+							<group>
+                                <field name="fecha"/>
+                            </group>
+                            <group>                               
+                                <field name="orden"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+ 
+        <record model="ir.ui.view" id="view_citasjmo_cita_search">
+            <field name="name">view.citasjmo.cita.search</field>
+            <field name="model">citasjmo.cita</field>
+			<field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Citas">
+                    <field name="autor"/>
+                </search>
+            </field>
+        </record>
+		
+    </data>
+</openerp>
